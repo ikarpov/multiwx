@@ -1,0 +1,17 @@
+This is an example of something that should work but seems to crash python on Mac OS X.
+
+The file multiwx.py contains a simple function that starts a 
+multiprocessing.Process and establishes a multiprocessing.Queue
+to talk to it. The process then creates a simple wxPython app
+consisting of a frame with a button. The button puts items onto
+the Queue. The main process consumes the items until it sees
+the item None, at which it joins the child process and exits.
+The item None is sent by the wxPython application when the frame
+is closed.
+
+The expected behavior (which happens on Linux with Python 2.6.5 
+and wx.__version__ == '2.8.10.1') is that every button presses 
+causes 'Button!' to be printed by the main process and the frame
+close event causes 'closing!' and 'done!' to be printed and the 
+program to exit. On Mac OS X Snow Leopard, this causes Python to
+crash with a memory access error.
