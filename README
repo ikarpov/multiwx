@@ -20,4 +20,72 @@ wx.__version__ 2.8.10.1, script behaves as expected.
 On Windows 7 with Python 2.7.2 and wxPython 2.8.12.1, script
 behaves as expected.
 
-On Mac OS X Snow Leopard, the program crashes.
+On Mac OS X 10.6.8 (x86 Intel), the following crash is produced:
+
+Process:         Python [408]
+Path:            /System/Library/Frameworks/Python.framework/Versions/2.6/Resources/Python.app/Contents/MacOS/Python
+Identifier:      Python
+Version:         ??? (???)
+Code Type:       X86 (Native)
+Parent Process:  Python [405]
+
+Date/Time:       2011-09-22 15:15:10.459 -0500
+OS Version:      Mac OS X 10.6.8 (10K549)
+Report Version:  6
+
+Interval Since Last Report:          200152 sec
+Crashes Since Last Report:           11
+Per-App Crashes Since Last Report:   5
+Anonymous UUID:                      EE52D522-D315-4B44-90E2-6E4E431A94DD
+
+Exception Type:  EXC_BAD_ACCESS (SIGSEGV)
+Exception Codes: KERN_INVALID_ADDRESS at 0x00000000b011aff0
+Crashed Thread:  0  Dispatch queue: com.apple.main-thread
+
+Application Specific Information:
+*** multi-threaded process forked ***
+
+Thread 0 Crashed:  Dispatch queue: com.apple.main-thread
+0   com.apple.CoreGraphics          0x958671b5 _CG_spin_lock_try + 9
+1   com.apple.CoreGraphics        	0x95866fd9 CGSShmemRWLockLockForReading + 79
+2   com.apple.CoreGraphics        	0x95866f81 lockDisplay + 45
+3   com.apple.CoreGraphics        	0x958786e9 CGSMainDisplayID + 122
+4   _core_.so                     	0x005a20ec wxPyTestDisplayAvailable() + 12
+5   _core_.so                     	0x005ac3d1 wxFindWindowByLabel(wxString const&, wxWindow const*) + 1061
+6   org.python.python             	0x0000c6e0 PyObject_Call + 101
+7   org.python.python             	0x0008c843 PyEval_EvalFrameEx + 21688
+8   org.python.python             	0x0008cf74 PyEval_EvalCodeEx + 1720
+9   org.python.python             	0x0008b5a1 PyEval_EvalFrameEx + 16918
+10  org.python.python             	0x0008cf74 PyEval_EvalCodeEx + 1720
+11  org.python.python             	0x0002ee0c PyClassMethod_New + 1823
+12  org.python.python             	0x0000c6e0 PyObject_Call + 101
+13  org.python.python             	0x0001c10d PyClass_New + 1603
+14  org.python.python             	0x0000c6e0 PyObject_Call + 101
+15  org.python.python             	0x00053d8a _PyType_Lookup + 5617
+16  org.python.python             	0x00055bc1 PyType_GenericAlloc + 3133
+17  org.python.python             	0x0000c6e0 PyObject_Call + 101
+18  org.python.python             	0x0008c812 PyEval_EvalFrameEx + 21639
+19  org.python.python             	0x0008cf74 PyEval_EvalCodeEx + 1720
+20  org.python.python             	0x0002ed9f PyClassMethod_New + 1714
+21  org.python.python             	0x0000c6e0 PyObject_Call + 101
+22  org.python.python             	0x0008c843 PyEval_EvalFrameEx + 21688
+23  org.python.python             	0x0008b4e5 PyEval_EvalFrameEx + 16730
+24  org.python.python             	0x0008b4e5 PyEval_EvalFrameEx + 16730
+25  org.python.python             	0x0008cf74 PyEval_EvalCodeEx + 1720
+26  org.python.python             	0x0002ee0c PyClassMethod_New + 1823
+27  org.python.python             	0x0000c6e0 PyObject_Call + 101
+28  org.python.python             	0x0001c10d PyClass_New + 1603
+29  org.python.python             	0x0000c6e0 PyObject_Call + 101
+30  org.python.python             	0x00053d8a _PyType_Lookup + 5617
+31  org.python.python             	0x00055bc1 PyType_GenericAlloc + 3133
+32  org.python.python             	0x0000c6e0 PyObject_Call + 101
+33  org.python.python             	0x0008c812 PyEval_EvalFrameEx + 21639
+34  org.python.python             	0x0008b4e5 PyEval_EvalFrameEx + 16730
+35  org.python.python             	0x0008b4e5 PyEval_EvalFrameEx + 16730
+36  org.python.python             	0x0008cf74 PyEval_EvalCodeEx + 1720
+37  org.python.python             	0x0008d019 PyEval_EvalCode + 87
+38  org.python.python             	0x000a40af Py_CompileString + 111
+39  org.python.python             	0x000a415b PyRun_FileExFlags + 139
+40  org.python.python             	0x000a5e7e PyRun_SimpleFileExFlags + 814
+41  org.python.python             	0x000b315c Py_Main + 3074
+42  org.python.python.app         	0x00001eb5 start + 53
