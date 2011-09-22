@@ -9,9 +9,15 @@ the item None, at which it joins the child process and exits.
 The item None is sent by the wxPython application when the frame
 is closed.
 
-The expected behavior (which happens on Linux with Python 2.6.5 
-and wx.__version__ == '2.8.10.1') is that every button presses 
-causes 'Button!' to be printed by the main process and the frame
+The expected behavior is that every button presses causes 
+'Button!' to be printed by the main process and the frame
 close event causes 'closing!' and 'done!' to be printed and the 
-program to exit. On Mac OS X Snow Leopard, this causes Python to
-crash with a memory access error.
+program to exit. 
+
+On Ubuntu Linux 10.4 Lucid Lynx (x86_64) with Python 2.6.5 and
+wx.__version__ 2.8.10.1, script behaves as expected.
+
+On Windows 7 with Python 2.7.2 and wxPython 2.8.12.1, script
+behaves as expected.
+
+On Mac OS X Snow Leopard, the program crashes.
